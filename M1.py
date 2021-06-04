@@ -237,24 +237,52 @@ above_avg = prices[boolean_array]
 print(above_avg)
 
 # Import the data
-#import pandas as pd
-#df = pd.read_csv(r'H:\UCD Professional Academy\DataCamp Excercise data\Introduction to Python for Finance\S&P100.csv')
-#sectors = df.loc[:,1]
-#print(sectors)
+import pandas as pd
+column_names = ['Name', 'Sector', 'Price', 'EPS']
+df = pd.read_csv(r'H:\UCD Professional Academy\DataCamp Excercise data\Introduction to Python for Finance\S&P100.csv', names=column_names)
+sectors = df['Sector']
+names = df['Name']
+prices = df['Price']
 
 # Create boolean array
-#boolean_array = (sectors == 'Health Care')
-#print(boolean_array)
+boolean_array = (sectors == 'Health Care')
+print(boolean_array)
 
 # Print only health care companies
-#health_care = names[boolean_array]
-#print(health_care)
+health_care = names[boolean_array]
+print(health_care)
 
 # Import matplotlib.pyplot with the alias plt
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+column_names2 = ['Day', 'Price']
+df2 = pd.read_csv(r'H:\UCD Professional Academy\DataCamp Excercise data\Introduction to Python for Finance\Stocks1.csv', names=column_names2)
+days = df2['Day']
+prices = df2['Price']
+column_names3 = ['day', 'company1', 'company2']
+df3 = pd.read_csv(r'H:\UCD Professional Academy\DataCamp Excercise data\Introduction to Python for Finance\Stocks2.csv', names=column_names3)
+days3 = df3['day']
+prices1 = df3['company1']
+prices2 = df3['company2']
 
 # Plot the price of stock over time
-#plt.plot(days, prices, color="red", linestyle="--")
+plt.plot(days, prices, color="red", linestyle="--")
 
-# Display the plot
-#plt.show()
+# Add x and y labels
+plt.xlabel('Days')
+plt.ylabel('Prices, $')
+
+# Add plot title
+plt.title('Company Stock Prices Over Time')
+
+# Show plot
+plt.show()
+
+# Plot two lines of varying colors
+plt.plot(days3, prices1, color='red')
+plt.plot(days3, prices2, color='green')
+
+# Add labels
+plt.xlabel('Days')
+plt.ylabel('Prices, $')
+plt.title('Stock Prices Over Time')
+plt.show()
