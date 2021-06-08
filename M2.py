@@ -127,3 +127,111 @@ del(alphabet_hist[closing_price_date])
 
 # Print with key deleted
 print(alphabet_hist)
+
+# Assign a value to cash.
+cash = 19.11
+non_cash = 20.33
+
+# Check if cash is equal to non-cash
+print(cash == non_cash)
+
+# Assign the value of cash to be equal non-cash
+cash = non_cash
+
+# Check if cash is equal to non-cash
+print(cash == non_cash)
+
+# Check dividend is greater than zero
+d1 = 323
+d2 = 489
+print(d2 > 0)
+
+# Is dividend 1 is greater than dividend 2?
+print(d1 > d2)
+
+# Check dividend 1 is at least 100
+print(d1 >= 100)
+
+# Check dividend 2 is at least as much dividend 1
+print(d1 <= d2)
+
+# Print the given variables
+is_investment_account = True
+balance_positive = True
+print(is_investment_account)
+print(balance_positive)
+
+# Decide if this account is cantidate for trading advice
+potential_trade = is_investment_account and balance_positive
+
+# Print if this represents a potential trade
+print(potential_trade)
+
+# Assign a default action if no input
+input_action = ''
+is_trading_day = False
+action = input_action or "Hold"
+
+# Print the action
+print(action)
+
+# Assign action only if trades can be made
+do_action = is_trading_day and action
+
+# Print the action to do
+print(do_action)
+
+closing_prices = []
+market_closed = False
+print(closing_prices)
+
+# Assigning True if we need to get the prices
+not_prices = not closing_prices
+
+print(not_prices)
+
+# Get prices if market is closed and we don't have prices
+get_prices = not (market_closed and not_prices)
+
+print(get_prices)
+
+purchases = []
+sales = []
+
+# Get number of purchases
+num_purchases = len(purchases)
+# Get number of sales
+num_sales = len(sales)
+
+# Check if more sales than purchases
+if num_purchases < num_sales:
+    print('buy more')
+
+# Check if fewer sales than purchases
+if num_sales < num_purchases:
+    print('sell more')
+
+# Check if both lists are empty
+if not (purchases or sales):
+    print('No sales or purchases')
+
+appl = []
+tsla = []
+amzn = []
+trn = {'symbol': 'APPL', 'amount': 300, 'type': 'DIVIDEND'}
+# Get the symbol value
+symbol = trn['symbol']
+
+# Check if Apple stock
+if symbol == 'APPL':
+    appl.append(trn)
+# Check if Tesla stock
+elif symbol == 'TSLA':
+    tsla.append(trn)
+# Check if Amazon stock
+elif symbol == 'AMZN':
+    amzn.append(trn)
+# Handle other companies
+else:
+    print(symbol)
+
