@@ -1,8 +1,6 @@
-import pandas as pd
-column_names = ['Name', 'Sector', 'Price', 'EPS']
-df = pd.read_csv(r'H:\UCD Professional Academy\DataCamp Excercise data\Introduction to Python for Finance\S&P100.csv', names=column_names)
-sectors = df['Sector']
-names = df['Name']
-prices = df['Price']
+import datetime
 
-print(prices)
+
+
+# March 10, 2000 Tech Bubble Crash
+tech_bubble = datetime.datetime(2000, 3, 10)
