@@ -243,6 +243,7 @@ df = pd.read_csv(r'H:\UCD Professional Academy\DataCamp Excercise data\Introduct
 sectors = df['Sector']
 names = df['Name']
 prices = df['Price']
+earnings = df['EPS']
 
 # Create boolean array
 boolean_array = (sectors == 'Health Care')
@@ -257,7 +258,7 @@ import matplotlib.pyplot as plt
 column_names2 = ['Day', 'Price']
 df2 = pd.read_csv(r'H:\UCD Professional Academy\DataCamp Excercise data\Introduction to Python for Finance\Stocks1.csv', names=column_names2)
 days = df2['Day']
-prices = df2['Price']
+prices_stock = df2['Price']
 column_names3 = ['day', 'company1', 'company2']
 df3 = pd.read_csv(r'H:\UCD Professional Academy\DataCamp Excercise data\Introduction to Python for Finance\Stocks2.csv', names=column_names3)
 days3 = df3['day']
@@ -265,7 +266,7 @@ prices1 = df3['company1']
 prices2 = df3['company2']
 
 # Plot the price of stock over time
-plt.plot(days, prices, color="red", linestyle="--")
+plt.plot(days, prices_stock, color="red", linestyle="--")
 
 # Add x and y labels
 plt.xlabel('Days')
@@ -275,7 +276,8 @@ plt.ylabel('Prices, $')
 plt.title('Company Stock Prices Over Time')
 
 # Show plot
-plt.show()
+#plt.show()
+plt.close()
 
 # Plot two lines of varying colors
 plt.plot(days3, prices1, color='red')
@@ -285,4 +287,154 @@ plt.plot(days3, prices2, color='green')
 plt.xlabel('Days')
 plt.ylabel('Prices, $')
 plt.title('Stock Prices Over Time')
-plt.show()
+#plt.show()
+plt.close()
+
+# Plot price as a function of time
+plt.scatter(days, prices_stock, color='green', s=0.1)
+
+# Show plot
+#plt.show()
+plt.close()
+
+# Plot histogram
+plt.hist(prices_stock, bins=100)
+
+# Display plot
+#plt.show()
+plt.close()
+
+# Plot histogram of stocks_A
+plt.hist(prices1, bins=100, alpha=0.4)
+
+# Plot histogram of stocks_B
+plt.hist(prices2, bins=100, alpha=0.4)
+
+# Display plot
+#plt.show()
+plt.close()
+
+# Plot stock_A and stock_B histograms
+plt.hist(prices1, bins=100, alpha=0.4, label='Stock A')
+plt.hist(prices2, bins=100, alpha=0.4, label='Stock B')
+
+# Add the legend
+plt.legend()
+
+# Display the plot
+#plt.show()
+plt.close()
+
+# First four items of names
+print(names[0:4])
+#print(names)
+type(names)
+
+# Print information on last company
+print(names[-1:])
+print(prices[-1:])
+print(earnings[-1:])
+print(sectors[-1:])
+
+# Convert lists to arrays
+str_prices_array = np.array(prices[1:])
+str_earnings_array = np.array(earnings[1:])
+str_names_array = np.array(names[1:])
+
+prices_array = str_prices_array.astype(float)
+earnings_array = str_earnings_array.astype(float)
+
+print(prices_array)
+print(type(prices_array))
+
+print(earnings_array)
+print(type(earnings_array))
+
+# Calculate P/E ratio
+pe = prices_array / earnings_array
+print(pe)
+
+# Create boolean array
+boolean_array = (sectors == 'Information Technology')
+boolean_array2 = boolean_array[1:]
+
+# Subset sector-specific data
+it_names = str_names_array[boolean_array2]
+it_pe = pe[boolean_array2]
+
+# Display sector names
+print(it_names)
+print(it_pe)
+
+# Create boolean array
+boolean_array = (sectors == 'Consumer Staples')
+boolean_array2 = boolean_array[1:]
+
+# Subset sector-specific data
+cs_names = names[boolean_array]
+cs_pe = pe[boolean_array2]
+
+# Display sector names
+print(cs_names)
+print(cs_pe)
+
+it_pe_mean = np.mean(it_pe)
+it_pe_std = np.std(it_pe)
+
+print(it_pe_mean)
+print(it_pe_std)
+
+cs_pe_mean = np.mean(cs_pe)
+cs_pe_std = np.std(cs_pe)
+
+print(cs_pe_mean)
+print(cs_pe_std)
+
+# Make a scatterplot
+plt.close()
+it_id = range(0, 15)
+cs_id = range(0, 12)
+plt.scatter(it_id, it_pe, color = 'red', label = 'IT')
+plt.scatter(cs_id, cs_pe, color = 'green', label = 'CS')
+
+# Add legend
+plt.legend()
+
+# Add labels
+plt.xlabel('Company ID')
+plt.ylabel('P/E Ratio')
+#plt.show()
+plt.close()
+
+# Plot histogram
+plt.hist(x = it_pe, bins = 8)
+
+# Add x-label
+plt.xlabel('P/E ratio')
+
+# Add y-label
+plt.ylabel('Frequency')
+
+# Show plot
+#plt.show()
+plt.close()
+
+# Identify P/E ratio within it_pe that is > 50
+outlier_price = it_pe[it_pe > 50]
+
+# Identify the company with PE ratio > 50
+outlier_name = it_names[it_pe > 50]
+
+print(outlier_name)
+print(outlier_price)
+
+outlier_name2 = outlier_name
+
+print(outlier_name2)
+
+print(type(outlier_name2))
+print(type(outlier_price))
+
+# Display results
+print("In 2017, " + str(outlier_name2) + " had an abnormally high P/E ratio of " + str(round(outlier_price[0], 2)) + ".")
+
