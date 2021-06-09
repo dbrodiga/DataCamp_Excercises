@@ -235,3 +235,69 @@ elif symbol == 'AMZN':
 else:
     print(symbol)
 
+buy = {'symbol': 'CSCO', 'total_cost': 200}
+buys = [{'symbol': 'AAPL', 'total_cost': 900}, {'symbol': 'ORCL', 'total_cost': 300}, {'symbol': 'CSCO', 'total_cost': 200}]
+balance = 1299
+
+# Loop through buys
+for buy in buys:
+    print('Buying ' + buy['symbol'])
+    new_balance = balance - buy['total_cost']
+    if new_balance < 0:
+        print('Unable to finish buys')
+        break
+    balance = new_balance
+
+print(balance)
+
+nea = {datetime(1929, 1, 1, 0, 0): 0.38299999999999995, datetime(1930, 1, 1, 0, 0): 0.32299999999999995, datetime(1931, 1, 1, 0, 0): 0.001, datetime(1932, 1, 1, 0, 0): 0.043, datetime(1933, 1, 1, 0, 0): 0.057999999999999996, datetime(1934, 1, 1, 0, 0): 0.322, datetime(1935, 1, 1, 0, 0): -0.213, datetime(1936, 1, 1, 0, 0): -0.147, datetime(1937, 1, 1, 0, 0): 0.078, datetime(1938, 1, 1, 0, 0): 0.966, datetime(1939, 1, 1, 0, 0): 0.833, datetime(1940, 1, 1, 0, 0): 1.4709999999999999, datetime(1941, 1, 1, 0, 0): 1.033, datetime(1942, 1, 1, 0, 0): -0.252, datetime(1943, 1, 1, 0, 0): -2.246, datetime(1944, 1, 1, 0, 0): -2.024, datetime(1945, 1, 1, 0, 0): -0.7659999999999999, datetime(1946, 1, 1, 0, 0): 7.182, datetime(1947, 1, 1, 0, 0): 10.807, datetime(1948, 1, 1, 0, 0): 5.487, datetime(1949, 1, 1, 0, 0): 5.235, datetime(1950, 1, 1, 0, 0): 0.738, datetime(1951, 1, 1, 0, 0): 2.513, datetime(1952, 1, 1, 0, 0): 1.1640000000000001, datetime(1953, 1, 1, 0, 0): -0.701, datetime(1954, 1, 1, 0, 0): 0.40399999999999997, datetime(1955, 1, 1, 0, 0): 0.478, datetime(1956, 1, 1, 0, 0): 2.3609999999999998, datetime(1957, 1, 1, 0, 0): 4.075, datetime(1958, 1, 1, 0, 0): 0.5379999999999999, datetime(1959, 1, 1, 0, 0): 0.397, datetime(1960, 1, 1, 0, 0): 4.204, datetime(1961, 1, 1, 0, 0): 4.914, datetime(1962, 1, 1, 0, 0): 4.101, datetime(1963, 1, 1, 0, 0): 4.939, datetime(1964, 1, 1, 0, 0): 6.915, datetime(1965, 1, 1, 0, 0): 5.617999999999999, datetime(1966, 1, 1, 0, 0): 3.863, datetime(1967, 1, 1, 0, 0): 3.555, datetime(1968, 1, 1, 0, 0): 1.35, datetime(1969, 1, 1, 0, 0): 1.431, datetime(1970, 1, 1, 0, 0): 3.948, datetime(1971, 1, 1, 0, 0): 0.621, datetime(1972, 1, 1, 0, 0): -3.373, datetime(1973, 1, 1, 0, 0): 4.111000000000001, datetime(1974, 1, 1, 0, 0): -0.815, datetime(1975, 1, 1, 0, 0): 15.977, datetime(1976, 1, 1, 0, 0): -1.631, datetime(1977, 1, 1, 0, 0): -23.094, datetime(1978, 1, 1, 0, 0): -25.366, datetime(1979, 1, 1, 0, 0): -22.545, datetime(1980, 1, 1, 0, 0): -13.056, datetime(1981, 1, 1, 0, 0): -12.519, datetime(1982, 1, 1, 0, 0): -19.974, datetime(1983, 1, 1, 0, 0): -51.641999999999996, datetime(1984, 1, 1, 0, 0): -102.727, datetime(1985, 1, 1, 0, 0): -114.01799999999999, datetime(1986, 1, 1, 0, 0): -131.869, datetime(1987, 1, 1, 0, 0): -144.77, datetime(1988, 1, 1, 0, 0): -109.39299999999999, datetime(1989, 1, 1, 0, 0): -86.741, datetime(1990, 1, 1, 0, 0): -77.855, datetime(1991, 1, 1, 0, 0): -28.614, datetime(1992, 1, 1, 0, 0): -34.738, datetime(1993, 1, 1, 0, 0): -65.173, datetime(1994, 1, 1, 0, 0): -92.48700000000001, datetime(1995, 1, 1, 0, 0): -89.76100000000001, datetime(1996, 1, 1, 0, 0): -96.376, datetime(1997, 1, 1, 0, 0): -101.971, datetime(1998, 1, 1, 0, 0): -162.711, datetime(1999, 1, 1, 0, 0): -255.834, datetime(2000, 1, 1, 0, 0): -375.05, datetime(2001, 1, 1, 0, 0): -367.92900000000003, datetime(2002, 1, 1, 0, 0): -425.402, datetime(2003, 1, 1, 0, 0): -503.12699999999995, datetime(2004, 1, 1, 0, 0): -619.075, datetime(2005, 1, 1, 0, 0): -721.193, datetime(2006, 1, 1, 0, 0): -770.924, datetime(2007, 1, 1, 0, 0): -718.426, datetime(2008, 1, 1, 0, 0): -723.0880000000001, datetime(2009, 1, 1, 0, 0): -396.45099999999996, datetime(2010, 1, 1, 0, 0): -513.903, datetime(2011, 1, 1, 0, 0): -579.462, datetime(2012, 1, 1, 0, 0): -568.571, datetime(2013, 1, 1, 0, 0): -490.782, datetime(2014, 1, 1, 0, 0): -507.658, datetime(2015, 1, 1, 0, 0): -519.845, datetime(2016, 1, 1, 0, 0): -518.807, datetime(2017, 1, 1, 0, 0): -575.336, datetime(2018, 1, 1, 0, 0): -638.214}
+surplus_years = []
+query_date = datetime(2008, 1, 1)
+
+# Loop while true
+while True:
+    net_exports = nea.get(query_date, -1)
+    query_date = datetime(query_date.year - 1, 1, 1)
+    # Skip if net exports are not positive
+    if net_exports < 0:
+           continue
+    surplus_years.append(query_date)
+    # Check if 5 years have been collected
+    if len(surplus_years) == 5:
+        # Stop the loop
+        break
+print(surplus_years)
+
+import pandas as pd
+
+# Create dict holding the data
+data = {'Sym': ['APPL', 'APPL', 'APPL'],
+        'Price': [105.00, 117.05, 289.80],
+        'Date': ['2015/12/31', '2017/12/01', '2019/12/27']}
+
+# Create DataFrame from the data
+positions = pd.DataFrame(data=data)
+print(positions)
+
+# Make list of dictionaries
+data = [{'Sym': 'APPL', 'Price': 105.00, 'Date': '2015/12/31'},
+        {'Sym': 'APPL', 'Price': 117.05, 'Date': '2017/12/01'},
+        {'Sym': 'APPL', 'Price': 289.80, 'Date': '2019/12/27'}]
+
+# Create DataFrame from the list
+positions = pd.DataFrame(data=data)
+print(positions)
+
+# Create a list of lists
+data = [['APPL', 105.00, '2015/12/31'],
+        ['APPL', 117.05, '2017/12/01'],
+        ['APPL', 289.80, '2019/12/27']]
+
+# Define the column names
+columns = ['Sym', 'Price', 'Date']
+
+# Create a DataFrame with the data and column names
+df = pd.DataFrame(data=data, columns=columns)
+print(df)
+
+
