@@ -239,7 +239,7 @@ print(above_avg)
 # Import the data
 import pandas as pd
 column_names = ['Name', 'Sector', 'Price', 'EPS']
-df = pd.read_csv(r'H:\UCD Professional Academy\DataCamp Excercise data\Introduction to Python for Finance\S&P100.csv', names=column_names)
+df = pd.read_csv('S&P100.csv', names=column_names)
 sectors = df['Sector']
 names = df['Name']
 prices = df['Price']
@@ -256,11 +256,11 @@ print(health_care)
 # Import matplotlib.pyplot with the alias plt
 import matplotlib.pyplot as plt
 column_names2 = ['Day', 'Price']
-df2 = pd.read_csv(r'H:\UCD Professional Academy\DataCamp Excercise data\Introduction to Python for Finance\Stocks1.csv', names=column_names2)
+df2 = pd.read_csv('Stocks1.csv', names=column_names2)
 days = df2['Day']
 prices_stock = df2['Price']
 column_names3 = ['day', 'company1', 'company2']
-df3 = pd.read_csv(r'H:\UCD Professional Academy\DataCamp Excercise data\Introduction to Python for Finance\Stocks2.csv', names=column_names3)
+df3 = pd.read_csv('Stocks2.csv', names=column_names3)
 days3 = df3['day']
 prices1 = df3['company1']
 prices2 = df3['company2']

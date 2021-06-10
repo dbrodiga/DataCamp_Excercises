@@ -300,4 +300,43 @@ columns = ['Sym', 'Price', 'Date']
 df = pd.DataFrame(data=data, columns=columns)
 print(df)
 
+# Read the data
+stocks = pd.read_csv('HistoricalQuotes.csv')
 
+# Look at the data
+print(stocks)
+
+# Read the data
+ledger = pd.read_csv('LedgerM2.csv', index_col=0)
+ledger.index = ledger.index.astype(str)
+
+# Look at the data
+print(ledger)
+
+# All columns for October 1st
+print(ledger.loc['01/10/2020', :])
+
+# Balance for all dates
+print(ledger.loc[:, 'Balance'])
+
+# Cell first row, Balance column
+print(ledger.iloc[[0], [2]])
+
+# Cell last row, Cash column
+print(ledger.iloc[[2], [0]])
+
+# Oldest two Securites amounts
+print(ledger.iloc[0:2, 1])
+
+# Newest Securites and Balance
+print(ledger.iloc[2, 1:3])
+
+# Set October 2nd Cash quantity
+ledger.iloc[1, 0] = 1500
+
+print(ledger)
+
+# Set Balance of all to 2000
+ledger.iloc[0:, 2] = 2000
+
+print(ledger)

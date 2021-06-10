@@ -1,6 +1,4 @@
-import datetime
-
-
-
-# March 10, 2000 Tech Bubble Crash
-tech_bubble = datetime.datetime(2000, 3, 10)
+# Import the data
+import pandas as pd
+column_names = ['Name', 'Sector', 'Price', 'EPS']
+df = pd.read_csv('S&P100.csv', names=column_names)
