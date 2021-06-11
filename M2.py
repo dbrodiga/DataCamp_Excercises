@@ -340,3 +340,11 @@ print(ledger)
 ledger.iloc[0:, 2] = 2000
 
 print(ledger)
+
+# Peak at top five rows
+alphabet = pd.read_csv('HistoricalQuotes.csv', index_col=0)
+alphabet.drop(['13:33'], inplace=True)
+print(alphabet.head())
+print(alphabet.tail(1))
+
+print(alphabet.describe())
