@@ -344,7 +344,61 @@ print(ledger)
 # Peak at top five rows
 alphabet = pd.read_csv('HistoricalQuotes.csv', index_col=0)
 alphabet.drop(['13:33'], inplace=True)
+alphabet[['close', 'open', 'high', 'low']] = alphabet[['close', 'open', 'high', 'low']].astype('float')
+alphabet[['volume']] = alphabet[['volume']].astype('int')
+alphabet.index = pd.to_datetime(alphabet.index, format='%d/%m/%Y')
+
+print(alphabet.dtypes)
 print(alphabet.head())
 print(alphabet.tail(1))
 
 print(alphabet.describe())
+print(alphabet.describe(include='int'))
+print(alphabet.describe(percentiles=[0.3, 0.6, 0.7]))
+
+# Mask for large enough daily high
+high_mask = alphabet.high > 500
+
+# Filter using the mask
+print(alphabet.loc[high_mask])
+
+# Mask for specific volume
+volume_mask = alphabet.volume == 1771271
+
+# Filter using the mask
+print(alphabet.loc[volume_mask])
+
+# Mask rows whose volume is not 1997999
+volume_mask = alphabet.volume != 1997999
+
+# Filter using the mask
+print(alphabet.loc[volume_mask])
+
+start_date = datetime(2019, 8, 2)
+end_date=datetime(2019, 7, 29)
+
+print(start_date)
+print(end_date)
+
+# Calculate the mask for one week
+mask = (alphabet.index <= start_date) & (alphabet.index >= end_date)
+
+# Use the mask to get the data for one week
+df = alphabet[mask]
+
+# Look at result
+print(df)
+
+#alphabet['A'] = alphabet.index.year
+#alphabet['B'] = alphabet.index.month
+
+#print(alphabet)
+
+start_date2=datetime(2019, 7, 15)
+end_date2=datetime(2019, 7, 1)
+mask2 = (alphabet.index <= start_date2) & (alphabet.index >= end_date2)
+alphabet2w = alphabet[mask2]
+print(alphabet2w)
+
+alphabet2w.plot(y = 'high', rot=90, title='High Daily Prices')
+alphabet2w.plot(y='volume', kind='hist', title='Alphabet Daily Volume')
