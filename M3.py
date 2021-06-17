@@ -428,7 +428,9 @@ plt.legend(['conventional', 'organic'])
 plt.show()
 
 #Create avocados_2016, a subset of avocados that contains only sales from 2016
-avocados_2016 = avocados(avocados['date'].year == '2016')
+
+avocados_2016 = avocados[avocados['year'] == '2016']
+print(avocados_2016)
 
 # Check individual values for missing values
 print(avocados_2016.isna())
@@ -442,8 +444,11 @@ avocados_2016.isna().sum().plot(kind="bar")
 # Show plot
 plt.show()
 
-avocados[['date']] = avocados[['date']].astype('datetime64')
-avocados_2016 = avocados[avocados['date'].dt.year == '2016']
-
 # Check individual values for missing values
 print(avocados_2016.isna())
+
+# Remove rows with missing values
+avocados_complete = avocados_2016.dropna()
+
+# Check if any columns contain missing values
+print(avocados_complete.isna().any())
