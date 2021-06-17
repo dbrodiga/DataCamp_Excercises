@@ -1,10 +1,17 @@
 # Import the data
 import pandas as pd
+import matplotlib.pyplot as plt
 # Peak at top five rows
-alphabet = pd.read_csv('HistoricalQuotes.csv', index_col=0)
-print(alphabet.head())
-print(alphabet.info())
-print(alphabet.describe())
+avocados = pd.read_pickle('avoplotto.pkl')
 
-print(alphabet.columns)
-print(alphabet.index)
+# Check individual values for missing values
+print(avocados.isna())
+
+# Check each column for missing values
+print(avocados.isna().any())
+
+# Bar plot of missing values by variable
+avocados.isna().sum().plot(kind="bar")
+
+# Show plot
+plt.show()
