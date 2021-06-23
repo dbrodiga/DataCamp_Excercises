@@ -80,6 +80,7 @@ print(sorted_pop_vac_lic.head())
 taglines = pd.read_pickle('DataCamp M4/taglines.p')
 movies = pd.read_pickle('DataCamp M4/movies.p')
 financials = pd.read_pickle('DataCamp M4/financials.p')
+movie_to_genres = pd.read_pickle('DataCamp M4/movie_to_genres.p')
 
 movies_taglines = movies.merge(taglines, on='id', how='left')
 print(movies_taglines.head())
@@ -92,3 +93,46 @@ number_of_missing_fin = movies_financials['budget'].isnull().sum()
 
 # Print the number of movies missing financials
 print(number_of_missing_fin)
+
+# Use right join to merge the movie_to_genres and pop_movies tables
+genres_movies = movie_to_genres.merge(movies, how='right',
+                                      left_on='movie_id',
+                                      right_on='id')
+
+# Count the number of genres
+genre_count = genres_movies.groupby('genre').agg({'id':'count'})
+
+# Plot a bar chart of the genre_count
+genre_count.plot(kind='bar')
+plt.show()
+
+crews = pd.read_pickle('DataCamp M4/crews.p')
+
+# Merge the crews table to itself
+crews_self_merged = crews.merge(crews, on='id', how='inner',
+                                suffixes=('_dir','_crew'))
+
+# Create a boolean index to select the appropriate rows
+boolean_filter = ((crews_self_merged['job_dir'] == 'Director') &
+                  (crews_self_merged['job_crew'] != 'Director'))
+direct_crews = crews_self_merged[boolean_filter]
+
+# Print the first few rows of direct_crews
+print(direct_crews.head())
+
+sequels = pd.read_pickle('DataCamp M4/sequels.p')
+
+# Merge sequels and financials on index id
+sequels_fin = sequels.merge(financials, on='id', how='left')
+
+# Self merge with suffixes as inner join with left on sequel and right on id
+orig_seq = sequels_fin.merge(sequels_fin, how='inner', left_on='sequel', right_on='id', suffixes=('_org', '_seq'))
+
+# Add calculation to subtract revenue_org from revenue_seq
+orig_seq['diff'] = orig_seq['revenue_seq'] - orig_seq['revenue_org']
+
+# Select the title_org, title_seq, and diff
+titles_diff = orig_seq[['title_org','title_seq','diff']]
+
+# Print the first rows of the sorted titles_diff
+print(titles_diff.sort_values('diff', ascending=False).head())
