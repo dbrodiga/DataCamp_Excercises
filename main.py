@@ -1,9 +1,9 @@
-# Import the data
-import pandas as pd
 import matplotlib.pyplot as plt
+import pandas as pd
+import datetime as dt
+import calendar
 
-taglines = pd.read_pickle('DataCamp M4/taglines.p')
-movies = pd.read_pickle('DataCamp M4/movies.p')
+seattle_weather = pd.read_csv('DataCamp M5/seattle_weather.csv')
 
-movies_taglines = movies.merge(taglines, on='id', how='left')
-print(movies_taglines.head())
+#seattle_weather['MONTH'] = pd.to_datetime(seattle_weather['DATE'], format='%b')
+seattle_weather['MONTH'] = seattle_weather['DATE'].calendar.month_abbr
